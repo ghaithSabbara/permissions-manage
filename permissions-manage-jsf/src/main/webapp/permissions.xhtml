@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Permissions Manage</title>
+</h:head>
+<h:body>
+	<style type="text/css">
+.ui-datatable td {
+	padding: 4px 10px !important;
+	overflow: hidden !important;
+}
+
+.ui-datatable td:nth-child(1) {
+	background-color: #c4c4c4 !important;
+	text-align: center !important;
+	padding: 4px 10px !important;
+	overflow: hidden !important;
+	border-width: 1px !important;
+	border-style: solid !important;
+	border: 1px solid #aed0ea !important;
+	font-weight: bold !important;
+	color: #2779aa !important;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.7) !important;
+	background: #d7ebf9
+		url(/permissions-manage-jsf/javax.faces.resource/images/ui-bg_glass_80_d7ebf9_1x400.png.xhtml?ln=primefaces-cupertino)
+		50% 50% repeat-x !important;
+	text-align: center !important;
+}
+</style>
+	<p:outputLabel value="Permissions Manage"></p:outputLabel>
+	<h:form id="form">
+		<p:growl id="msg" showDetail="true" />
+		<p:dataTable id="roles" var="role" value="#{roleBean.matrix}">
+
+			<p:column headerText="Droit">
+				<h:outputText id="droitOutput" value="#{role.droit}" label="Droit" />
+			</p:column>
+
+			<p:column headerText="Role A">
+
+				<p:selectBooleanCheckbox id="roleAInput"
+					value="#{role.roleA.checked}">
+					<p:ajax update=":form:roles :form:msg" event="change"
+						listener="#{roleBean.addMessage(role.roleA)}" />
+				</p:selectBooleanCheckbox>
+
+			</p:column>
+
+			<p:column headerText="Role B">
+				<p:selectBooleanCheckbox id="roleBInput"
+					value="#{role.roleB.checked}">
+					<p:ajax update=":form:roles :form:msg" event="change"
+						listener="#{roleBean.addMessage(role.roleB)}" />
+				</p:selectBooleanCheckbox>
+			</p:column>
+
+			<p:column headerText="Role C">
+				<p:selectBooleanCheckbox id="roleCInput"
+					value="#{role.roleC.checked}">
+					<p:ajax update=":form:roles :form:msg" event="change"
+						listener="#{roleBean.addMessage(role.roleC)}" />
+				</p:selectBooleanCheckbox>
+			</p:column>
+
+			<p:column headerText="Role D">
+				<p:selectBooleanCheckbox id="roleDInput"
+					value="#{role.roleD.checked}">
+					<p:ajax update=":form:roles :form:msg" event="change"
+						listener="#{roleBean.addMessage(role.roleD)}" />
+				</p:selectBooleanCheckbox>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
